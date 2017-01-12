@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         ORIENTATIONS.append(Surface.ROTATION_270, 180);
     }
 
-    private final int VIDEO_ENCODING_BIT_RATE = 2* 512 * 1000;
-    private final int VIDEO_RECORDING_FRAME_RATE = 60;
+    private final int VIDEO_ENCODING_BIT_RATE = 512 * 1000;
+    private final int VIDEO_RECORDING_FRAME_RATE = 30;
     private final String OUTPUT_FILE_PATH = Environment.
             getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) +
             "/screen_capture.mp4";
