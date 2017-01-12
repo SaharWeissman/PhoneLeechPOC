@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PhoneLeech</string>
+    <string name="label_permissions">Grant Permission</string>
+</resources>
