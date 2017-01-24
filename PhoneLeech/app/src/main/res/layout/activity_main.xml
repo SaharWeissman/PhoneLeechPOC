@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:wowza="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -37,4 +38,26 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="85dp"
         android:src="@android:drawable/ic_lock_power_off"/>
+    <!-- <com.wowza.gocoder.sdk.api.devices.WZCameraView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/camera_preview"
+        wowza:scaleMode="fill"
+        wowza:defaultCamera="back"
+        wowza:frameSizePreset="frameSize1280x720"/> -->
+    <net.majorkernelpanic.streaming.gl.SurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- The broadcast button -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Broadcast"
+        android:id="@+id/broadcast_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>

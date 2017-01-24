@@ -1,15 +1,30 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'net.ltgt.apt'
+
+repositories {
+    maven { url "https://jitpack.io" }
+    flatDir {
+        dirs 'libs'
+    }
+}
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
-        applicationId "com.cmc.phoneleech"
-        minSdkVersion 21
-        targetSdkVersion 19
+        applicationId "com.aitorvs.android.com.autoparcel"
+        minSdkVersion 19
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                className 'com.aitorvs.autoparcel.internal.codegen.AutoParcelProcessor'
+            }
+        }
     }
     buildTypes {
         release {
@@ -17,11 +32,32 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
+
+task processorTask(type: Copy) {
+    from '../compiler/build/libs'
+    into 'libs'
+}
+processorTask.dependsOn(':compiler:build')
+preBuild.dependsOn(processorTask)
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:design:23.0.+'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.0.+'
+    provided project(':library')
+    apt project(':adapter')
+    compile(name:'gocoder_sdk', ext:'aar')
+    apt project(':compiler')
+    compile files('libs/compiler.jar')
+    compile 'com.squareup:javapoet:1.7.0'
+    apt 'com.squareup:javapoet:1.7.0'
+    apt 'com.google.auto.value:auto-value:1.2'
+    apt 'io.requery:requery-processor:1.1.1'
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:design:24.2.0'
+    compile project(path: ':adapter')
 }

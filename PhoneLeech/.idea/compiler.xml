@@ -14,8 +14,10 @@
       <entry name="!?*.aj" />
     </wildcardResourcePatterns>
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="false">
-        <processorPath useClasspath="true" />
+      <profile default="true" name="Default" enabled="true">
+        <processorPath useClasspath="false">
+          <entry name="$PROJECT_DIR$/compiler/src/main/java/com/aitorvs/autoparcel/internal/codegen/AutoParcelProcessor.java" />
+        </processorPath>
       </profile>
     </annotationProcessing>
   </component>
