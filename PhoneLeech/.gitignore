@@ -6,3 +6,10 @@
 .DS_Store
 /build
 /captures
+/PhoneLeech.iml
+.idea/vcs.xml
+app/src/main/res/drawable/
+compiler/libs/
+library/libs/
+projectFilesBackup/
+/.idea/
